@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+env/
+
+# Databases (Don't commit local chat histories or server data)
+*.db
+*.sqlite
+*.sqlite3
+
+# Client Keys (Don't commit private RSA keys!)
+client_keys_*/
+client_keys/
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary / Generated files
+*.log

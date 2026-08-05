@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure XML Messaging</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="login-screen" class="glass-panel">
+        <h1>Welcome to SecureChat</h1>
+        <p>End-to-End Encrypted XML Messaging</p>
+        <div class="input-group">
+            <input type="text" id="login-username" placeholder="Enter a unique username..." autocomplete="off">
+            <button id="login-btn">Generate Keys & Connect</button>
+        </div>
+        <p id="login-status"></p>
+    </div>
+
+    <div id="app-container" class="hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="user-profile">
+                <div class="avatar" id="my-avatar">U</div>
+                <div class="user-info">
+                    <span id="my-username">User</span>
+                    <span class="status-indicator">Connected <span id="my-friend-code" style="color:var(--accent); font-weight: 600; margin-left: 6px;"></span></span>
+                </div>
+            </div>
+            
+            <div class="contacts">
+                <h3>Start Chat (Add via Friend Code)</h3>
+                <div class="input-group">
+                    <input type="text" id="contact-input" placeholder="Enter 6-char code (e.g. A7B9X2)">
+                    <button id="set-contact-btn">Add</button>
+                </div>
+                
+                <h3 style="margin-top: 24px;">Saved Contacts</h3>
+                <div id="contacts-list" style="display:flex; flex-direction:column; gap:8px;">
+                    <!-- Contacts will appear here -->
+                </div>
+                
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area glass-panel">
+            <div class="chat-header">
+                <h2>Chat <span id="header-contact"></span></h2>
+                <button id="toggle-xml-btn" class="icon-btn" title="Toggle Raw XML Panel">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+                </button>
+            </div>
+            
+            <div id="messages-container" class="messages-container">
+                <!-- Messages will appear here -->
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="message-input" placeholder="Type an encrypted message..." autocomplete="off" disabled>
+                <button id="send-btn" disabled>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+        </main>
+
+        <!-- Raw XML Inspector Panel -->
+        <aside id="xml-panel" class="xml-panel glass-panel hidden">
+            <div class="xml-header">
+                <h3>Raw XML Payload (SOAP)</h3>
+                <button id="close-xml-btn" class="icon-btn">&times;</button>
+            </div>
+            <div class="xml-content">
+                <pre><code id="xml-code-display">Select a message to view its raw XML.</code></pre>
+            </div>
+        </aside>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
